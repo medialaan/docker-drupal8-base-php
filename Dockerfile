@@ -1,6 +1,5 @@
 FROM php:7.1.12-fpm-alpine
 
-#
 RUN apk update \
  && apk add --virtual .phpize-deps $PHPIZE_DEPS \
  && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
@@ -32,7 +31,7 @@ WORKDIR /drupal
 
 RUN curl -fSL "https://github.com/hechoendrupal/drupal-console-launcher/releases/download/1.3.1/drupal.phar" -o /usr/local/bin/drupal && chmod +x /usr/local/bin/drupal
 
-# Drush needs mysql command
+# Drush needs mysql client
 RUN apk --no-cache add mysql-client
 
 COPY php.ini /usr/local/etc/php/
