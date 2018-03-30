@@ -1,13 +1,13 @@
-FROM php:7.1-fpm-alpine
+FROM php:7.2.3-fpm-alpine
 
 RUN apk update \
- && apk add --virtual .phpize-deps $PHPIZE_DEPS \
+ && apk add --virtual .phpize-deps ${PHPIZE_DEPS} \
  && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
  && apk add libmemcached zlib cyrus-sasl \
  && pecl install igbinary-2.0.5 \
  && apk add --virtual .php-ext-memcached-deps libmemcached-dev zlib-dev cyrus-sasl-dev \
- && pecl bundle memcached-3.0.3 \
- && rm memcached-3.0.3.tgz \
+ && pecl bundle memcached-3.0.4 \
+ && rm memcached-3.0.4.tgz \
  && cd memcached \
  && phpize \
  && ./configure --enable-memcached-igbinary \
@@ -29,9 +29,8 @@ RUN apk update \
 
 WORKDIR /drupal
 
-RUN curl -fSL "https://github.com/hechoendrupal/drupal-console-launcher/releases/download/1.3.1/drupal.phar" -o /usr/local/bin/drupal && chmod +x /usr/local/bin/drupal
+RUN curl -fSL "https://github.com/hechoendrupal/drupal-console-launcher/releases/download/1.8.0/drupal.phar" -o /usr/local/bin/drupal && chmod +x /usr/local/bin/drupal
 
-# Drush needs mysql client
 RUN apk --no-cache add mysql-client
 
 COPY php.ini /usr/local/etc/php/
