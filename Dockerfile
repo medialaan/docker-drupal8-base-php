@@ -1,5 +1,7 @@
 FROM php:7.2.3-fpm-alpine
 
+ENV PATH /drupal/vendor/bin:$PATH
+
 RUN apk update \
  && apk add --virtual .phpize-deps ${PHPIZE_DEPS} \
  && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
