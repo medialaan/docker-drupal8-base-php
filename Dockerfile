@@ -1,7 +1,5 @@
 FROM php:7.2.3-fpm-alpine
 
-ENV PATH /drupal/vendor/bin:$PATH
-
 RUN apk update \
  && apk add --virtual .phpize-deps ${PHPIZE_DEPS} \
  && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
@@ -31,8 +29,9 @@ RUN apk update \
 
 WORKDIR /drupal
 
-RUN curl -fSL "https://github.com/hechoendrupal/drupal-console-launcher/releases/download/1.8.0/drupal.phar" -o /usr/local/bin/drupal && chmod +x /usr/local/bin/drupal
+RUN curl -fSL https://github.com/drush-ops/drush/releases/download/8.1.16/drush.phar -o /usr/local/bin/drush && chmod +x /usr/local/bin/drush
 
 RUN apk --no-cache add mysql-client
 
 COPY php.ini /usr/local/etc/php/
+COPY settings.php /drupal/web/sites/default/
