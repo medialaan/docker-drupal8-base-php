@@ -3,6 +3,7 @@ FROM php:7.2.4-fpm-alpine
 RUN apk update \
  && apk add --virtual .phpize-deps ${PHPIZE_DEPS} \
  && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
+ && pecl install xdebug-2.6.0 \
  && apk add libmemcached zlib cyrus-sasl \
  && pecl install igbinary-2.0.5 \
  && apk add --virtual .php-ext-memcached-deps libmemcached-dev zlib-dev cyrus-sasl-dev \

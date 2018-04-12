@@ -45,6 +45,14 @@ $conf['memcache_pagecache_header'] = TRUE;
 $conf['memcache_servers'] = array(getenv('DRUPAL_MEMCACHED_SERVER') . ':11211' => 'default');
 
 /**
+ * Include site specific settings
+ */
+
+if (file_exists($app_root . '/' . $site_path . '/settings.site.php')) {
+  include $app_root . '/' . $site_path . '/settings.site.php';
+}
+
+/**
  * Include local settings
  */
 
