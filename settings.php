@@ -34,15 +34,15 @@ $settings['entity_update_batch_size'] = 50;
 
 $settings['allow_authorize_operations'] = FALSE;
 
-$conf['cache_backends'][] = 'sites/all/modules/memcache/memcache.inc';
-$conf['cache_default_class'] = 'MemCacheDrupal';
-$conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
-$conf['page_cache_without_database'] = TRUE;
-$conf['page_cache_invoke_hooks'] = FALSE;
-$conf['lock_inc'] = 'sites/all/modules/contrib/memcache/memcache-lock.inc';
-$conf['memcache_stampede_protection'] = TRUE;
-$conf['memcache_pagecache_header'] = TRUE;
-$conf['memcache_servers'] = array(getenv('DRUPAL_MEMCACHED_SERVER') . ':11211' => 'default');
+/* $conf['cache_backends'][] = 'sites/all/modules/memcache/memcache.inc'; */
+/* $conf['cache_default_class'] = 'MemCacheDrupal'; */
+/* $conf['cache_class_cache_form'] = 'DrupalDatabaseCache'; */
+/* $conf['page_cache_without_database'] = TRUE; */
+/* $conf['page_cache_invoke_hooks'] = FALSE; */
+/* $conf['lock_inc'] = 'sites/all/modules/contrib/memcache/memcache-lock.inc'; */
+/* $conf['memcache_stampede_protection'] = TRUE; */
+/* $conf['memcache_pagecache_header'] = TRUE; */
+/* $conf['memcache_servers'] = array(getenv('DRUPAL_MEMCACHED_SERVER') . ':11211' => 'default'); */
 
 /**
  * Include site specific settings
