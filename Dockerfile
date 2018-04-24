@@ -30,13 +30,15 @@ RUN apk update \
 
 WORKDIR /drupal
 
-RUN curl -fsSL https://github.com/drush-ops/drush/releases/download/8.1.16/drush.phar -o /usr/local/bin/drush && chmod +x /usr/local/bin/drush
+RUN curl -fsSL https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar -o /usr/local/bin/drush && chmod +x /usr/local/bin/drush
 
 RUN curl -fsSL https://github.com/hechoendrupal/drupal-console-launcher/releases/download/1.8.0/drupal.phar -o /usr/local/bin/drupal && chmod +x /usr/local/bin/drupal
 
 RUN curl -fsSL https://github.com/composer/composer/releases/download/1.6.3/composer.phar -o /usr/local/bin/composer && chmod +x /usr/local/bin/composer
 
 RUN apk --no-cache add mysql-client
+
+RUN curl -fsSL https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64 -o /usr/local/bin/mhsendmail && chmod +x /usr/local/bin/mhsendmail
 
 COPY php.ini /usr/local/etc/php/
 COPY settings.php /drupal/web/sites/default/
