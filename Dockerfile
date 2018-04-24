@@ -35,6 +35,7 @@ RUN curl -fsSL https://github.com/drush-ops/drush-launcher/releases/download/0.6
 RUN curl -fsSL https://github.com/hechoendrupal/drupal-console-launcher/releases/download/1.8.0/drupal.phar -o /usr/local/bin/drupal && chmod +x /usr/local/bin/drupal
 
 RUN curl -fsSL https://github.com/composer/composer/releases/download/1.6.3/composer.phar -o /usr/local/bin/composer && chmod +x /usr/local/bin/composer
+RUN composer global require hirak/prestissimo:0.3.7
 
 RUN apk --no-cache add mysql-client
 
