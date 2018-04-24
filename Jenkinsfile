@@ -1,3 +1,3 @@
 #!/usr/bin/env groovy
 
-deployDockerImage name: 'drupal8-php', public: true
+deployDockerImage name: 'drupal8-base-php', public: true
